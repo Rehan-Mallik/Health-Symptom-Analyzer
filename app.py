@@ -66,22 +66,16 @@ def load_model():
     )
     return model
 
-
 def ask_model(question: str) -> str:
     if not question.strip():
         return "Please describe your symptoms."
     try:
         model = load_model()
-        messages = [
-            {"role": "system",  "content": SYSTEM_PROMPT},
-            {"role": "user",    "content": question}
-        ]
-        response = model.chat(messages=messages)
-        return response["choices"][0]["message"]["content"]
+        full_prompt = f"{SYSTEM_PROMPT}\n\nUser: {question}\nAssistant:"
+        response = model.generate_text(prompt=full_prompt)
+        return response
     except Exception as e:
         return f"❌ Error: {e}\n\nPlease check your credentials and try again."
-
-
 # ── UI ─────────────────────────────────────────────────────
 st.title("🩺 Health Symptom Checker")
 st.caption("Powered by IBM Watsonx.ai · For educational purposes only · Not a medical diagnosis")
