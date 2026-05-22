@@ -10,7 +10,7 @@
 ---
 
 ## 🎥 Demo
-> [Add your Loom/YouTube demo link here]
+Live Demo : (https://health-symptom-analyzer-zrbfx2bmm37giy2iznwe7w.streamlit.app/)
 
 ---
 
