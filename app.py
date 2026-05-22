@@ -3,7 +3,10 @@ import streamlit as st
 from dotenv import load_dotenv
 from langchain_ibm import ChatWatsonx
 from ibm_watsonx_ai import APIClient
-from ibm_watsonx_ai.foundation_models.utils import Toolkit
+try:
+    from ibm_watsonx_ai.foundation_models.utils import Toolkit
+except ImportError:
+    from ibm_watsonx_ai.foundation_models import Toolkit
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain_core.tools import StructuredTool
 from langgraph.checkpoint.memory import MemorySaver
